@@ -1,1 +1,0 @@
-/*arrays, funções e objetos*/
