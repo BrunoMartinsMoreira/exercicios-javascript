@@ -1,34 +1,80 @@
 function calculoImc() {
    const form = document.querySelector('form');
-   const resultado = document.querySelector('.resultado');
 
-   function recebeDadosDoForm(evento) {
-      evento.preventDefault();
+   form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      const inputPeso = form.querySelector('#peso');
+      const inputAltura = form.querySelector('#altura');
 
-      const altura = form.querySelector('#altura');
-      const peso = form.querySelector('#peso');
+      const peso = Number(inputPeso.value);
+      const altura = Number(inputAltura.value);
 
-      const imc = Number(peso.value / (altura.value ** 2)).toFixed(2);
-
-      let diagnostico = ``;
-
-      if (imc < 18.5) {
-         diagnostico = `IMC: ${imc}, você está abaixo do abaixo do peso.`
-      } else if (imc >= 18.5 && imc <= 24.99) {
-         diagnostico = `IMC: ${imc}, seu peso está normal.`
-      } else if (imc >= 25 && imc <= 29.99) {
-         diagnostico = `IMC: ${imc}, você está com sobrepeso.`
-      } else if (imc >= 30 && imc <= 34.99) {
-         diagnostico = `IMC: ${imc}, você está com obesidade grau 1.`
-      } else if (imc >= 35 && imc <= 39.99) {
-         diagnostico = `IMC: ${imc}, você está com obesidade grau 2.`
-      } else if (imc > 40) {
-         diagnostico = `IMC: ${imc}, você está com obesidade grau 3.`
+      if (!peso) {
+         setResultado('Peso inválido', false)
+         return;
       }
 
-      resultado.innerHTML += `<p>${diagnostico}</p>`
+      if (!altura) {
+         setResultado('Altura inválida', false)
+         return;
+      }
+
+      const imc = getImc(peso, altura);
+      const nivelImc = getNivelImc(imc);
+      const msg = `O seu imc é ${imc}, ${nivelImc}`;
+
+      setResultado(msg, true);
+   });
+
+   function getNivelImc(imc) {
+      const nivel = ['Abaixo do peso', 'Peso normal', 'Sobrepeso',
+         'Obesidade nivel 1', 'Obesidade nivel 2', 'Obesidade nivel 3'
+      ];
+      if (imc < 18.5) {
+         return nivel[0];
+      }
+      if (imc >= 18.5 && imc < 24.9) {
+         return nivel[1];
+      }
+      if (imc >= 24.9 && imc < 29.9) {
+         return nivel[2];
+      }
+      if (imc >= 29.9 && imc < 34.9) {
+         return nivel[3];
+      }
+      if (imc >= 34.9 && imc < 39.9) {
+         return nivel[4];
+      }
+      if (imc >= 39.9) {
+         return nivel[5];
+      }
+   };
+
+   function getImc(peso, altura) {
+      const imc = peso / (altura ** 2)
+      return imc.toFixed(2);
+   };
+
+   function criaP() {
+      const p = document.createElement('p')
+      return p;
+   };
+
+   function setResultado(msg, isValid) {
+      const resultado = document.querySelector('.resultado');
+      resultado.innerHTML = "";
+      const p = criaP();
+
+      if (isValid) {
+         p.classList.add('resultadoP');
+      } else {
+         p.classList.add('erro')
+      };
+
+      p.innerHTML = msg;
+      resultado.appendChild(p);
    }
-   form.addEventListener('submit', recebeDadosDoForm);
+
 
 }
 calculoImc();

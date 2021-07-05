@@ -1,10 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
 
-:root {
-   --primary-color: rgb(113, 229, 255);
-   --primary-color-darker: rgb(4, 29, 34);
-}
-
 * {
    box-sizing: border-box;
    outline: none;
@@ -75,4 +70,14 @@ form button {
 
 form button:hover {
    background: rgba(0, 0, 0, 0.7);
+}
+
+.erro{
+   background: rgb(243, 93, 93);
+   padding: 10px 20px;
+}
+.resultadoP{
+   background: rgba(145, 250, 245, 0.959);
+   padding: 10px 20px;
+   border-radius: 4px;
 }
