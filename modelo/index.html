@@ -11,24 +11,21 @@
 
 <body>
    <section class="container glass">
-      <h1>Um título qualquer</h1>
-      <p>
-         Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      </p>
+      <h1>Calcule seu imc</h1>
+
       <form>
-         <label for="inputText">Label text</label>
-         <input type="text" id="inputText">
+         <label for="altura">Sua altura</label>
+         <input type="number" id="altura" step="0.01">
 
-         <label for="inputPwd">Label password</label>
-         <input type="password" id="inputPwd">
+         <label for="peso">Seu peso</label>
+         <input type="number" id="peso" step="0.01">
 
-         <label for="inputEmail">Label email</label>
-         <input type="email" id="inputEmail">
+         <button type="submit">Calcular</button>
 
-         <label for="inputNum">Label number</label>
-         <input type="number" id="inputNum">
-         <button>Calcular</button>
       </form>
+      <div class="resultado">
+
+      </div>
    </section>
 
    <script src="./script.js"></script>
