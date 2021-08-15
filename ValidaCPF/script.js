@@ -48,7 +48,7 @@ ValidaCPF.prototype.criaDigito = function (cpfParcial) {
    }, 0);
 
    const digito = 11 - (total % 11);
-   return digito > 9 ? 0 : String(digito);
+   return digito > 9 ? '0' : String(digito);
 };
 
 ValidaCPF.prototype.isSequencia = function () {
