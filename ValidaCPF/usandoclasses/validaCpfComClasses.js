@@ -1,6 +1,6 @@
 class ValidateCpf {
    constructor(CpfValue) {
-      Object.defineProperty(this, 'clearCpf', {
+      Object.defineProperty(this, 'cpfLimpo', {
          Writable: false,
          Enumerator: true,
          configurable: false,
@@ -9,11 +9,11 @@ class ValidateCpf {
    }
 
    isSequence() {
-      return this.clearCpf.charAt(0).repeat(11) === this.clearCpf;
+      return this.cpfLimpo.charAt(0).repeat(11) === this.cpfLimpo;
    }
 
    generateNewCpf() {
-      const cleanCpf = this.cleanCpf.slice(0, -2);
+      const cleanCpf = this.cpfLimpo.slice(0, -2);
       const digit1 = ValidateCpf.generateDigit(cleanCpf);
       const digit2 = ValidateCpf.generateDigit(cleanCpf + digit1);
       this.newCpf = cleanCpf + digit1 + digit2;
@@ -31,13 +31,13 @@ class ValidateCpf {
    }
 
    validate() {
-      if (!this.cleanCpf) return false;
-      if (typeof this.cleanCpf !== 'string') return false;
-      if (this.cleanCpf.lenght !== 11) return false;
+      if (!this.cpfLimpo) return false;
+      if (typeof this.cpfLimpo !== 'string') return false;
+      if (this.cpfLimpo.lenght !== 11) return false;
       if (this.isSequence()) return false;
       this.generateNewCpf();
 
-      return this.newCpf === this.cleanCpf;
+      return this.newCpf === this.cpfLimpo;
    }
 }
 let validateCpf = new ValidateCpf('121.690.796.02');
