@@ -4,6 +4,10 @@ const btn = document.querySelector('.btn');
 
 function randomCpf() {
   const gera = new GeraCPF();
-  cpfGerado.innerHTML = gera.geraNovoCpf();
+
+  btn.addEventListener('click', () => {
+    const cpf = gera.geraNovoCpf()
+    cpfGerado.innerHTML = cpf;
+  })
 };
 randomCpf()
