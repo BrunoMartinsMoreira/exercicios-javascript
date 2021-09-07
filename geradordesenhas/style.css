@@ -1,0 +1,44 @@
+.container {
+  width: 60vw;
+  background: #777;
+  padding: 5rem 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 10px;
+  margin: 1rem auto;
+  max-height: 80vh;
+}
+h2 {
+  text-transform: uppercase;
+  color: #f2f3fe;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-weight: 300;
+}
+.div {
+  max-width: 80vw;
+  min-width: 35vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1rem;
+}
+.div input {
+  justify-self: flex-end;
+  margin-left: 20px;
+}
+.gerar-senha {
+  margin: 1rem 0;
+}
+
+.senha-gerada {
+  background: #f2f3fe;
+  padding: 10px 15px;
+  border-radius: 3px;
+  color: #1b1b1bee;
+  min-width: 300px;
+  text-align: center;
+  font-weight: bold;
+}
